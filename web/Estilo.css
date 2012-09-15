@@ -1,19 +1,21 @@
-#index .ver_line { background:url(images/ver_line.gif) repeat-y 493px 0; width:100%;}
-/*Estilo del main*/
+div.cabezal{
+	position:relative;
+	top:0px;
+	left: auto;
+	height:130px;
+	width:1000px;
+	font-family:tahoma;
+	
+	-moz-border-radius-topright:10px;
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-bottomleft:0px;
+	-moz-border-radius-bottomright:0px;
+}
 #main { margin:0 auto;}
-#main { width:738px;}
-/*Fin de main*/
-/*cabecera*/
-#cabecera {height:468px;-moz-border-radius:15px;}
-#cabecera .left {padding:26px 0 0 0;}
-#cabecera .right {padding:46px 11px 0 0;}
-#cabecera .right a {color:#868686; font-family:arial; font-size:12px; padding:0 29px 2px 0;}
-#cabecera .content .text {padding:2px 0 33px 2px;}
-#cabecera .content a img {float:right;}
-/*cabecera*/
-/*cabecera logo*/
-.cabecera_logo{ height:145px; width:100%;}
-/*fin cabecera logo*/
+.left { float:left;}
+.right {float:right;}
+.clear  { clear:both;}
+
 /*menu*/
 #menu {background:url(menu_tall.gif) top repeat-x; height:65px; }
 #menu .rightbg {background:url(menu_right.gif) top right no-repeat;}
@@ -51,3 +53,4 @@ form{
        float: right;
    }
 
+  

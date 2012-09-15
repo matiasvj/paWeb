@@ -8,18 +8,19 @@
         <title>Ver Detalle de Equipos</title>
         <style type="text/css">@import url("Estilo.css"); </style>  
     </head>
-    <body>
-        <%
-        String activo_usuario =  (String)session.getAttribute("nombre_usuario");
-       
-        if(activo_usuario!=null)
-            {
-             out.println("Conectado: "+activo_usuario+"   <a href=\"Logout.jsp\" >Cerrar Sesion</a>");
+    <body id="index" background ="fondo.jpg">
+        
             
-          %>
+		<div id="main">
+			<!--cabecera -->
+			<div id="cabecera">
+				<div class="cabecera_logo">
+                                    <div class="left"><!--Se usa para posicionar el objeto dentro del div cabecera logo-->
+					<img alt=""  src="pr_centro.png" /><br />
+						</div>
         <form>
-            <table align="center"  border=1 >
-                 <div  id="Competicion">
+            <table  >
+                 <div >
                     <tr>
                     <td>Id Equipo</td>
                         <td>Nombre</td>
@@ -36,12 +37,10 @@
                     /*El arraylist se completa con los datos obtenidos en la consulta. Para eso necesitamos importar */    
                     %> 
                     </div>
+                    </div>
+                        </div>
              </table>
         </form>
-                    <%}
-                      else{ out.println("No se ha logueado aun");%>
-                        <jsp:forward page="Competiciones.jsp"/>;
-                      
-                     <%   } %>
+                     
     </body>
 </html>
