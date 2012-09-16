@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page language="java" import="Clases.*, java.lang.*"%><%/*importo las clases que estan en el paquete Clases.*/%>
+<%@page language="java" import="Clases.*, java.lang.*"%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -61,6 +61,9 @@
             </div>  
         </div>
         <!--fin formulario de iniciio de cesion-->
-        
+        <!--Contenido-->
+        <div class="centro">
+            <h1><a href =VerDetalleEquipos.jsp>Ver Equipos</a></h1>
+        </div>
 </body>
 </html>

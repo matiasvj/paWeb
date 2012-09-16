@@ -45,20 +45,20 @@
             <%
              ManejadorBD mbd =  ManejadorBD.getInstancia();
              
-             ArrayList<Competiciones> ListaCompeticiones = new ArrayList<Competiciones>();
+             ArrayList<Equipos> ListaEquipos = new ArrayList<Equipos>();
              try{
-                    ResultSet tabla =  mbd.VerDetalleCompeticion();
+                    ResultSet tabla =  mbd.VerDetalleEquipos();
                     while (tabla.next()) {
-                       Competiciones c = new Competiciones();
-                       c.setId(tabla.getObject("ID_Competicion").toString());
-                       c.setNombre(tabla.getObject("Nombre").toString());
-                       ListaCompeticiones.add(c);
+                       Equipos e = new Equipos();
+                       e.setId(tabla.getObject("id_equipos").toString());
+                       e.setNombre(tabla.getObject("nombre").toString());
+                       ListaEquipos.add(e);
                    } 
                  } catch (SQLException ex) {
                         out.println("Error"+ex.toString());
                     }
             %>
-            <form method="POST" action="Competiciones.jsp">    
+            <form method="POST" action="VerDetalleEquipos.jsp.jsp">    
                 <table>
                     <tr>
                         <td>Nombre</td>
@@ -66,10 +66,10 @@
                 
                         <%
                         
-                            for (int i=0;i<ListaCompeticiones.size();i++)
+                            for (int i=0;i<ListaEquipos .size();i++)
                             {
                                out.println("<tr>");
-                               out.println("<td><a href=Competiciones.jsp>"+ListaCompeticiones.get(i).getNombre()+"</a></td>");
+                               out.println("<td><a href=VerDetalleEquipos.jsp>"+ListaEquipos.get(i).getNombre()+"</a></td>");
                                out.println("</tr>");
                             }
                         %>
