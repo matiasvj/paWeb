@@ -1,0 +1,64 @@
+div.cabezal{
+	position:relative;
+	top:0px;
+	left: auto;
+	height:130px;
+	width:1000px;
+	font-family:tahoma;
+	
+	-moz-border-radius-topright:10px;
+	-moz-border-radius-topleft:10px;
+	-moz-border-radius-bottomleft:0px;
+	-moz-border-radius-bottomright:0px;
+}
+#main { margin:0 auto;}
+.left { float:left;}
+.right {float:right;}
+.clear  { clear:both;}
+
+/*menu*/
+#menu {background:url(menu_tall.gif) top repeat-x; height:65px; }
+#menu .rightbg {background:url(menu_right.gif) top right no-repeat;}
+#menu .leftbg {background:url(menu_left.gif) top left no-repeat; width:100%; height:65px;}
+#menu .padding {-moz-border-radius:30px;padding:9px 0; -webkit-border-radius:30px;}
+#menu li {float:left; width:123px; background:url(menu_libg.gif) top right repeat-y; font-size:12px; text-align:center;  display:block;}
+#menu li a {color:#919191; text-decoration:none; font-weight:normal; font-size:12px; display:block; padding:8px 0 5px 0;}
+#menu li span{ display:block; padding:8px 0 5px 0;}
+#menu li a:hover {color:#000000; text-decoration:underline;}
+#menu li span {color:#000000; text-decoration:underline;}
+#menu .last {background:none;}
+/*fin de menu*/
+* {	margin:0; padding:0;}
+
+html, input, textarea
+	{
+		font-family:Georgia, tahoma; 
+		font-size:11px;
+		line-height:17px;
+		color:#868686;		
+	}
+.left { float:left;}
+.right {float:right;} 
+.clear  { clear:both;}
+
+input, select { vertical-align:middle; font-weight:normal;}
+strong {font-size:12px; color:#444444;}
+
+a {color:#3d6f92; font-size:12px;}
+/*Medio*/
+form{
+    float: top;
+   }
+  
+div.centro{
+	position:relative;
+	top:0px;
+	left:55px;
+	height:700px;
+	width:570px;
+	float:left;
+	font-family:tahoma;
+	text-align:center;
+	overflow:auto;
+}
+  
