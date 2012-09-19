@@ -1,47 +1,47 @@
-<%@page language="java" import="Clases.*, java.lang.*"%>
-<%@page import="java.util.ArrayList"%>
-
-<%
-            String nombre = null;
-            nombre = request.getParameter("nombre_usuario");
-            String pass = null;
-            pass = request.getParameter("pass_usuario"); 
-            String existe_nombre= null, existe_pass = null;
-            ManejadorBD mbd = ManejadorBD.getInstancia();
-            int x=0;
-            ArrayList<Usuarios> lista = mbd.ObtenerUsuarios();
-           //Verifico si existe el nombre de usuario y el pass en la base de datos            
-            for (int i=0;i<lista.size();i++){
-                          if(nombre == lista.get(i).getNombre()){
-                             existe_nombre = nombre;
-                             existe_pass = pass;
-                          }
-             }
-            if (nombre == null || pass == null) {
-               out.print("Datos incorrectos!");
-              %>  <jsp:forward page="index.jsp"/><%
-            }
-
-            // Chequeamos los datos
-            //toLowerCase() cambia el string a minusculas, solo lo utilizo en el nombre
-            //trim() omite los espacios en blanco de los string. Lo uso para el nombre y el pass
-            if (nombre.trim().equals(existe_nombre) && pass.trim().equals(existe_pass)) {
-                //En una variable de session almaceno el nombre del usuario. 
-                session.setAttribute("nombre_usuario",nombre); %>
-                <jsp:forward page="index.jsp"/>
-         <%   }
-           else 
-               {
-                  out.print("Datos incorrectos!");%>
-                 <a href="index.jsp">Volver</a>
-                 
-          <% }
-
-
-            
-
-%> 
-
+<%@page import="Clases.Usuarios"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Clases.ManejadorBD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <!--Redireccion automatica cuando inicio sesion-->
+
+
+<%
+    ManejadorBD mbd = ManejadorBD.getInstancia();   
+    
+    String nombre = request.getParameter("nombre_usuario");
+    String pass = request.getParameter("pass_usuario");
+    Usuarios u = new Usuarios();
+    try{
+            ResultSet res = mbd.login(request.getParameter("nombre_usuario"));
+            res.next();
+            u.setNombre(res.getObject("nick").toString());
+            u.setPassword(res.getObject("password").toString());
+                       }catch(SQLException ex){
+                       out.println("Error: "+ex);}
+    if(nombre != null && pass !=null){
+        if(nombre.toLowerCase().trim().equals(u.getNombre())){
+            if(pass.equals(u.getPassword())){
+                session.setAttribute("username", nombre);
+                %><p>Bienvenido... redireccionando</p>
+                <script>window.location.href='index.jsp';</script><%
+            }
+            else{
+                        %><script>alert("El password no coincide");
+                       window.location.href='index.jsp';</script><%
+                       
+                       }
+         }
+                     else{
+                       %><script>alert("El usuario no existe");
+                       window.location.href='index.jsp';</script><%
+                       }
+        
+            
+    }
+       else{
+                        %><script>alert("Datos incorrectos");
+                       window.location.href='index.jsp';</script><%
+       }
+%> 

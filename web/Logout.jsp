@@ -1,6 +1,6 @@
 <%
 
-     String activo =(String)session.getAttribute("nombre_usuario");
+     String activo =(String)session.getAttribute("username");
     if(activo!=null)
         {
             session.removeAttribute(activo);

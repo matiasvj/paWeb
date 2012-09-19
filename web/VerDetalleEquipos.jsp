@@ -9,6 +9,8 @@
         <title>Ibet</title>
         <style type="text/css">@import url("Estilo.css"); </style>
 <link href="Estilo.css" rel="stylesheet" type="text/css" />
+
+   
 <!--script src="funciones.js" type="text/javascript"></script-->
 </head>
 
@@ -59,19 +61,28 @@
                     }
             %>
             <form method="POST" action="VerDetalleEquipos.jsp.jsp">    
-                <table>
+                <table id="detalles_Equipos">
                     <tr>
                         <td>Nombre</td>
                     </tr>
                 
                         <%
-                        
-                            for (int i=0;i<ListaEquipos .size();i++)
+                            int id=3;
+                            for (int i=0;i<ListaEquipos.size();i++)
                             {
                                out.println("<tr>");
-                               out.println("<td><a href=VerDetalleEquipos.jsp>"+ListaEquipos.get(i).getNombre()+"</a></td>");
+                               out.println("<td><input type=hidden id=seleccion><a href=VerDetalleEquipos.jsp>"+ListaEquipos.get(i).getNombre()+"</a></td>");
                                out.println("</tr>");
-                            }
+                               id = Integer.parseInt(ListaEquipos.get(i).getID());
+                               }
+                            out.println(id);
+                            ResultSet datos = mbd.VerDetalleEquipos(id);
+                            datos.next();
+                            Equipos e1 = new Equipos();
+                            e1.setNombre(datos.getObject("Nombre").toString());
+                            out.println("<tr><td>Nombre: "+e1.getNombre()+"</td></tr>");
+                            String ch = "";
+                            
                         %>
                 </table>
             </form>         
