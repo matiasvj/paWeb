@@ -9,13 +9,20 @@
 <!--script src="funciones.js" type="text/javascript"></script-->
 </head>
 
-<body id="index">
+<body id="index" background="fondo.jpg">
     <div id="main">
     <!--Cabezal arriba donde esta logo-->    
     <div class="cabezal">
             <div class="left"><!--Se usa para posicionar el objeto dentro del div cabecera logo-->
                 <a href="index.jsp"><img alt=""   src="pr_centro.png" /></a><br />
 	    </div>
+        <div class="right">
+            <%if(session.getAttribute("username")!=null){
+                
+              %>
+            <div id="estado_sesion"  ><h4>Bienvenido: <%out.print(session.getAttribute("username")); %>&nbsp;&nbsp;<a href="Logout.jsp">Cerrar Sesion</a></h4></div>
+            <%}%>    
+    </div>
     </div>
     <!--Fin cabecera-->
     <!--Barra de menu-->
@@ -37,9 +44,16 @@
      </div>
     <!--fin Barra de menu-->
     <!--formulario de iniciio de cesion-->
-        <div class="right">
+     <%if(session.getAttribute("username")==null){
+                
+              %>
+    <!--div id="transparente"-->    
+    <div class="right">
             <div id="login" > 
-                <form action="Login.jsp" method="post">
+               <form action="Login.jsp" method="POST">
+                   <fieldset class="Inicio de Sesion">
+                       <legend><b>Login</b></legend>
+                            
                     <table>         
                          <tr>
                             <td>Usuario:</td>
@@ -49,21 +63,23 @@
                             <td>Contraseña:</td> 
                             <td><input type="Password" name="pass_usuario"></td>
                        </tr>
-                        <tr>
-                            <td><input type="submit" name="Ingresar" value="Iniciar Sesion"></td>
-                        </tr>
-                        <tr>
+                       <tr>
+                        <tr><td><input type="submit" value="Ingresar"></td></tr>
                             <td><a href="#">Olvidaste la contraseña?</a></td>
-                            <td><a  id="reg" href="#">Registrate</a>
+                            <td><a  id="reg" href="Registro_Usuario.jsp">Registrate</a>
                         </tr>
-                    </table>       
+                    </table>  
+                  </fieldset>
                   </form>
             </div>  
-        </div>
+        </div> <%}%>  
+        <!--/div-->
         <!--fin formulario de iniciio de cesion-->
         <!--Contenido-->
         <div class="centro">
-            <h1><a href =VerDetalleEquipos.jsp>Ver Equipos</a></h1>
+            <h1><a href =VerDetalleEquipos.jsp>Probando VerDetalleEquipos</a></h1>
         </div>
 </body>
 </html>
+
+			
