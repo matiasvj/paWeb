@@ -12,7 +12,7 @@ public class Usuarios {
     }
 
     public String getNombre() {
-        return nombre;
+        return nombre;  
     }
 
     public void setEmail(String Email) {

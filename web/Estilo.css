@@ -61,4 +61,29 @@ div.centro{
 	text-align:center;
 	overflow:auto;
 }
-  
+#mensajesAyuda
+{
+	width:160px;
+	font-family:Verdana;
+	font-size:10px;
+	border:1px solid #000000;
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+	text-align:center;
+}
+#ayudaTitulo
+{
+	background-color:#000000; 
+	color:#FFFFFF; 
+	padding:1px;
+}
+
+#ayudaTexto
+{
+	vertical-align:middle;
+	padding:2px;
+}
+
+

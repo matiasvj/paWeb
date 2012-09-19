@@ -1,10 +1,5 @@
 package Clases;
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
       
   
 public class ManejadorBD {
@@ -53,6 +48,30 @@ public class ManejadorBD {
              return rs;
         } catch (SQLException ex) {
             return null;
+        }
+    }
+   public ResultSet VerDetalleEquipos(int id){
+        try {
+            ResultSet rs = st.executeQuery("SELECT * FROM equipos where id_equipos ="+id+"");
+             return rs;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+   public ResultSet login(String username){
+        try {
+            ResultSet rs = st.executeQuery("SELECT * from usuarios where nick = '"+username+"'");
+            return rs;
+        } catch (SQLException ex) {
+            return null;
+        }
+   }
+   public void registroUsuario(String username, String correo, String password, String sexo, String pais){
+         try {
+            st.executeUpdate("insert into usuarios (correo,nick,password, sexo, pais ) values ('"+correo+"','"+username+"','"+password+"','"+sexo+"','"+pais+"')");
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
         }
     }
 }
