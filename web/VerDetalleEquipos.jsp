@@ -15,6 +15,7 @@
 </head>
 
 <body id="index">
+   
     <div id="main">
     <!--Cabezal arriba donde esta logo-->    
     <div class="cabezal">
@@ -45,6 +46,7 @@
         <div class="centro">
             <!--Cargo un array de competiciones con los resultados de la consulta--> 
             <%
+              if(session.getAttribute("username")!=null){
              ManejadorBD mbd =  ManejadorBD.getInstancia();
              
              ArrayList<Equipos> ListaEquipos = new ArrayList<Equipos>();
@@ -82,10 +84,12 @@
                             e1.setNombre(datos.getObject("Nombre").toString());
                             out.println("<tr><td>Nombre: "+e1.getNombre()+"</td></tr>");
                             String ch = "";
-                            
+                           
+            
                         %>
                 </table>
-            </form>         
+            </form>         <%}
+                      %>
         </div>
     <!--fin Contenido-->
 </body>
