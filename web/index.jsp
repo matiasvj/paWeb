@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ibet</title>
         <style type="text/css">@import url("Estilo.css"); </style>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        
 <link href="Estilo.css" rel="stylesheet" type="text/css" />
 <!--script src="funciones.js" type="text/javascript"></script-->
 </head>
