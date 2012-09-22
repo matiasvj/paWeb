@@ -1,9 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" import="Clases.*, java.lang.*"%>
-<jsp:useBean id ="Reg" class ="Clases.Registro" scope="page">
-<jsp:setProperty name="Registro" property="*"></jsp:setProperty> 
-</jsp:useBean>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,7 +60,7 @@
               %>
            <fieldset>
              <legend><b>Registro de Usuario</b></legend>
-             <FORM id="formulario" name="formulario" method="POST" action="Registro" class="formulario">
+             <FORM id="formulario" name="formulario" method="POST" action="Validar.jsp" class="formulario">
                  <table cellpadding="5" align="center" border="0">
                         <tr><td>
                                 <table class="formulario">
