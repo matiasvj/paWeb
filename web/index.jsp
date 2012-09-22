@@ -22,7 +22,7 @@
             <%if(session.getAttribute("username")!=null){
                 
               %>
-            <div id="estado_sesion"  ><h4>Bienvenido: <%out.print(session.getAttribute("username")); %>&nbsp;&nbsp;<a href="Logout.jsp">Cerrar Sesion</a></h4></div>
+              <div id="estado_sesion"  ><h4>Bienvenido: <%out.print(session.getAttribute("username")); %>&nbsp;&nbsp; <a href="Perfil_Usuario.jsp">Editar Perfil</a>&nbsp;&nbsp;<a href="Logout.jsp">Cerrar Sesion</a></h4></div>
             <%}%>    
     </div>
     </div>

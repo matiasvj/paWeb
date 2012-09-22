@@ -78,18 +78,11 @@
                             for (int i=0;i<ListaEquipos.size();i++)
                             {
                                out.println("<tr>");
-                               out.println("<td><input type=hidden id=seleccion><a href=VerDetalleEquipos.jsp>"+ListaEquipos.get(i).getNombre()+"</a></td>");
+                               out.println("<td><a href=VerDetalleEquipo.jsp?cod="+ListaEquipos.get(i).getID()+">"+ListaEquipos.get(i).getNombre()+"</a></td>");
                                out.println("</tr>");
                                id = Integer.parseInt(ListaEquipos.get(i).getID());
                                }
-                            out.println(id);
-                            ResultSet datos = mbd.VerDetalleEquipos(id);
-                            datos.next();
-                            Equipos e1 = new Equipos();
-                            e1.setNombre(datos.getObject("Nombre").toString());
-                            out.println("<tr><td>Nombre: "+e1.getNombre()+"</td></tr>");
-                            String ch = "";
-                           
+                            
             
                         %>
                 </table>

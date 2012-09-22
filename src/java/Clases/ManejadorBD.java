@@ -1,5 +1,7 @@
 package Clases;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
       
   
 public class ManejadorBD {
@@ -42,6 +44,7 @@ public class ManejadorBD {
             return null;
         }
     }
+    //Ver Detalle Equipos, muestra lista de equipos
    public ResultSet VerDetalleEquipos(){
         try {
             ResultSet rs = st.executeQuery("SELECT * FROM equipos");
@@ -50,14 +53,15 @@ public class ManejadorBD {
             return null;
         }
     }
-   public ResultSet VerDetalleEquipos(int id){
+   //Ver Detalle Equipo, muestra informacion de un equipo seleccionado
+   public ResultSet VerDetalleEquipo(int id){
         try {
-            ResultSet rs = st.executeQuery("SELECT * FROM equipos where id_equipos ="+id+"");
-             return rs;
+            ResultSet rs = st.executeQuery("SELECT * FROM equipos WHERE id_equipos="+id+"");
+            return rs;
         } catch (SQLException ex) {
             return null;
         }
-    }
+   }
    public ResultSet login(String username){
         try {
             ResultSet rs = st.executeQuery("SELECT * from usuarios where nick = '"+username+"'");
@@ -74,4 +78,5 @@ public class ManejadorBD {
             System.out.println(ex.toString());
         }
     }
+   
 }
