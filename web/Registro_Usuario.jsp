@@ -12,7 +12,7 @@
 </head>
 
 <body  background="fondo.jpg">
-    
+   
     <div id="main">
     <!--Cabezal arriba donde esta logo-->    
     <div class="cabezal">
@@ -20,11 +20,7 @@
                 <a href="index.jsp"><img alt=""   src="pr_centro.png" /></a><br />
 	    </div>
         <div class="right">
-            <%if(session.getAttribute("username")!=null){
-                
-              %>
-            <div id="estado_sesion"  ><h4>Bienvenido: <%out.print(session.getAttribute("username")); %>&nbsp;&nbsp;<a href="Logout.jsp">Cerrar Sesion</a></h4></div>
-            <%}%>    
+               
     </div>
     </div>
     <!--Fin cabecera-->
@@ -128,8 +124,8 @@
         </div><%}
                                           }                  
                                             else{
-                          %><jsp:forward page="error.jsp"/><%
-                       } 
-                  %>
+                          %><script>alert("Ya ha iniciado una sesion, Intente mas tarde");
+                            window.location.href='index.jsp';</script>
+                      <% }   %>
 </body>
 </html>		

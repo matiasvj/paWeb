@@ -15,7 +15,12 @@
 </head>
 
 <body id="index">
-   
+    <!--Chequear sesion iniciada-->
+   <%if(session.getAttribute("username")==null){
+    %>
+    <script>alert("Debe iniciar sesion primero");
+        window.location.href='index.jsp';</script>
+   <%}%>
     <div id="main">
     <!--Cabezal arriba donde esta logo-->    
     <div class="cabezal">
