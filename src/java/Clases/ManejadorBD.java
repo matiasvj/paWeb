@@ -1,5 +1,9 @@
 package Clases;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
       
   
 public class ManejadorBD {
@@ -42,6 +46,7 @@ public class ManejadorBD {
             return null;
         }
     }
+    //Ver Detalle Equipos, muestra lista de equipos
    public ResultSet VerDetalleEquipos(){
         try {
             ResultSet rs = st.executeQuery("SELECT * FROM equipos");
@@ -50,14 +55,24 @@ public class ManejadorBD {
             return null;
         }
     }
-   public ResultSet VerDetalleEquipos(int id){
-        try {
-            ResultSet rs = st.executeQuery("SELECT * FROM equipos where id_equipos ="+id+"");
+    //Ver jugadores de equipo
+   public ResultSet VerJugadoresEquipo(int id){
+       try {
+            ResultSet rs = st.executeQuery("SELECT * FROM jugadores_equipos, jugadores where equipo="+id+" and id_jugador=jugador");
              return rs;
         } catch (SQLException ex) {
             return null;
         }
-    }
+   }
+   //Ver Detalle Equipo, muestra informacion de un equipo seleccionado
+   public ResultSet VerDetalleEquipo(int id){
+        try {
+            ResultSet rs = st.executeQuery("SELECT * FROM equipos WHERE id_equipos="+id+"");
+            return rs;
+        } catch (SQLException ex) {
+            return null;
+        }
+   }
    public ResultSet login(String username){
         try {
             ResultSet rs = st.executeQuery("SELECT * from usuarios where nick = '"+username+"'");
@@ -73,5 +88,26 @@ public class ManejadorBD {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+    }
+   public List ObtenerFechaHora()
+    {
+        ResultSet res;
+        List Lista= new ArrayList();
+         try {
+            res = st.executeQuery("select * from fecha where Id=1");
+            while(res.next())
+            {         
+                Lista.add(res.getObject(1));
+                Lista.add(res.getObject(2));
+                Lista.add(res.getObject(3));
+                Lista.add(res.getObject(4));
+                Lista.add(res.getObject(5));              
+            }
+            return Lista;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            return null;
+        }
+        
     }
 }
