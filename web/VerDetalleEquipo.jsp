@@ -20,11 +20,7 @@
                 <a href="index.jsp"><img alt=""   src="pr_centro.png" /></a><br />
 	    </div>
         <div class="right">
-            <%if(session.getAttribute("username")!=null){
-                
-              %>
               <div id="estado_sesion"  ><h4>Bienvenido: <%out.print(session.getAttribute("username")); %>&nbsp;&nbsp; <a href="Perfil_Usuario.jsp">Editar Perfil</a>&nbsp;&nbsp;<a href="Logout.jsp">Cerrar Sesion</a></h4></div>
-            <%}%>    
     </div>
     </div>
     <!--Fin cabecera-->
@@ -50,6 +46,45 @@
             out.println("<td>Nombre Equipo: <td>"+e.getNombre()+"</td></td>");
             out.println("</tr>");
             %>
+            </table>
+            <h4>Jugadores</h4>
+            <table>
+                <%
+                ResultSet jugadores= mbd.VerJugadoresEquipo(ID);
+                if (jugadores.first()){
+                    out.println("<tr>");
+                    out.println("<td>"+jugadores.getObject("jugadores.nombrecompleto") +"</td>");
+                    out.println("</tr>");
+                    while(jugadores.next()){
+                    out.println("<tr>");
+                    out.println("<td>"+jugadores.getObject("nombrecompleto") +"</td>");
+                    out.println("</tr>");
+                                       }
+                }
+                %>
+            </table>
+            <form method="POST" action="DetalleJugador.jsp.jsp">   
+            <table>
+                <%
+                //tabla con links a detalle de jugador
+                try{
+                    ResultSet jugador= mbd.VerJugadoresEquipo(ID);
+                    if (jugador.first()){
+                        out.println("<tr>");
+                        out.println("<td><a href=DetalleJugador.jsp?cod="+jugador.getObject("id_jugador")+">"+jugador.getObject("nombrecompleto")+"</a></td>");
+                        out.println("</tr>");
+                        while(jugador.next()){
+                            out.println("<tr>");
+                            out.println("<td><a href=DetalleJugador.jsp?cod="+jugador.getObject("id_jugador")+">"+jugador.getObject("nombrecompleto")+"</a></td>");
+                            out.println("</tr>");
+                        }
+                    }else{
+                        out.println("<h2>Este equipo aun no tiene jugadores asignados</h2>");
+                    }
+                } catch(Exception ex){
+                    out.println("<h2>error en la consulta de jugadores</h2>");
+                }
+                %>
             </table>
         </div>
       </div>

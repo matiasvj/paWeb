@@ -22,11 +22,11 @@
         window.location.href='index.jsp';</script>
    <%}%>
     <div id="main">
-    <!--Cabezal arriba donde esta logo-->    
+    <!--Cabezal arriba donde esta logo-->
     <div class="cabezal">
             <div class="left"><!--Se usa para posicionar el objeto dentro del div cabecera logo-->
-                <a href="index.jsp"><img alt=""   src="pr_centro.png" /></a><br />
-	    </div>
+                <a href="index.jsp"><img alt="" src="pr_centro.png" /></a><br />
+</div>
     </div>
     <!--Fin cabecera-->
     <!--Barra de menu-->
@@ -43,31 +43,31 @@
                             </ul>
                         </div>
                </div>
-        </div> 
+        </div>
      </div>
      </div>
     <!--fin Barra de menu-->
     <!--Contenido-->
         <div class="centro">
-            <!--Cargo un array de competiciones con los resultados de la consulta--> 
+            <!--Cargo un array de competiciones con los resultados de la consulta-->
             <%
               if(session.getAttribute("username")!=null){
-             ManejadorBD mbd =  ManejadorBD.getInstancia();
+             ManejadorBD mbd = ManejadorBD.getInstancia();
              
              ArrayList<Equipos> ListaEquipos = new ArrayList<Equipos>();
              try{
-                    ResultSet tabla =  mbd.VerDetalleEquipos();
+                    ResultSet tabla = mbd.VerDetalleEquipos();
                     while (tabla.next()) {
                        Equipos e = new Equipos();
                        e.setId(tabla.getObject("id_equipos").toString());
                        e.setNombre(tabla.getObject("nombre").toString());
                        ListaEquipos.add(e);
-                   } 
+                   }
                  } catch (SQLException ex) {
                         out.println("Error"+ex.toString());
                     }
             %>
-            <form method="POST" action="VerDetalleEquipos.jsp.jsp">    
+            <form method="POST" action="VerDetalleEquipos.jsp.jsp">
                 <table id="detalles_Equipos">
                     <tr>
                         <td>Nombre</td>
@@ -86,9 +86,12 @@
             
                         %>
                 </table>
-            </form>         <%}
+            </form> <%}
                       %>
         </div>
     <!--fin Contenido-->
 </body>
 </html>
+
+
+
