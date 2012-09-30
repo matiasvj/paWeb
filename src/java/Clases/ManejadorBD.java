@@ -110,4 +110,17 @@ public class ManejadorBD {
         }
         
     }
+   
+     public ResultSet consultarUsuario (String nombre){
+       ResultSet rs; 
+        try {
+            rs = st.executeQuery("select nick from usuarios where nick = '"+nombre+"'");
+             return rs;
+              
+        } catch (SQLException ex) {
+            
+            return null;
+        }
+       
+   }
 }
